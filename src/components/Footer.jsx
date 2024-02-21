@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="max-w-6xl mx-auto grid grid-cols-1 gap-8 lg:grid-cols-4">
           <div className="text-white">
             <h3 className="text-3xl font-bold">Riders Point</h3>
-            <p className="mt-4 text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <p className="mt-4 text-white">Join your Ride with us.</p>
           </div>
 
           <div className="text-white">
@@ -45,7 +45,7 @@ const Footer = () => {
 
           <div className="text-white">
             <h3 className="text-3xl font-bold">Call Us</h3>
-            <h3 className="mt-4 lg:mt-0">+91 12345678978</h3>
+            <h3 className="mt-4 lg:mt-0">+91 8625001836</h3>
           </div>
         </div>
 

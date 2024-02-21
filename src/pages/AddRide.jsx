@@ -26,6 +26,28 @@ const AddRide = () => {
     license: '',
     wantPillion: false
   });
+
+
+  const handleLicenseChange = (e) => {
+    const enteredLicense = e.target.value.toUpperCase(); // Convert to uppercase for consistency
+
+    // Check if the entered license matches the specified format
+    const isValidLicense = /^[A-Z]{0,2}\d{0,2}\s?\d{0,10}$/.test(enteredLicense);
+
+    if (isValidLicense || enteredLicense === '') {
+      setRidestatus({ ...ridestatus, license: enteredLicense });
+    } else {
+      // Display an error message or handle invalid input as needed
+      alert('Invalid license number');
+    }
+  };
+  
+
+
+
+
+
+  
   //Creating function to post data on server
 
   const handleSubmit = async (e) => {
@@ -136,19 +158,26 @@ const AddRide = () => {
               <input type="text" id="to" name="to" onChange={(e) => {
                 setRides({ ...rides, end_point: e.target.value });
               }}
-                value={rides.end_point}
+                // value={rides.end_point}
                 className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="date" className="block text-gray-700 font-bold mb-2">Date</label>
-              <input type="date" id="date" name="date" onChange={(e) => {
-                setRides({ ...rides, travel_date: e.target.value });
-              }}
-                value={rides.travel_date}
-                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500" />
-            </div>
-            <div className="mb-4">
+  <label htmlFor="date" className="block text-gray-700 font-bold mb-2">Date</label>
+  <input
+    type="date"
+    id="date"
+    name="date"
+    onChange={(e) => {
+      setRides({ ...rides, travel_date: e.target.value });
+    }}
+    value={rides.travel_date}
+    min={moment().format('YYYY-MM-DD')} // Set min attribute to today's date
+    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
+  />
+</div>
+
+            {/* <div className="mb-4">
               <label htmlFor="starttime" className="block text-gray-700 font-bold mb-2">Starting Time</label>
               <input type="time" id="starttime" name="starttime" onChange={(e) => {
                 setRides({ ...rides, start_time: e.target.value });
@@ -163,7 +192,7 @@ const AddRide = () => {
               }}
                 value={rides.end_time}
                 className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500" />
-            </div>
+            </div> */}
           </div>
           <div className="col-lg-6">
             <div className="mb-4">
@@ -186,14 +215,33 @@ const AddRide = () => {
                 className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500" />
             </div>
 
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label htmlFor="date" className="block text-gray-700 font-bold mb-2">Driving Licence</label>
               <input type="text" id="license" name="license" onChange={(e) => {
                 setRidestatus({ ...ridestatus, license: e.target.value });
               }}
                 value={ridestatus.license}
                 className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500" />
-            </div>
+            </div> */}
+
+<div>
+      <div className="mb-4">
+        <label htmlFor="license" className="block text-gray-700 font-bold mb-2">Driving Licence</label>
+        <input 
+          type="text" 
+          id="license" 
+          name="license" 
+          onChange={handleLicenseChange}
+          value={ridestatus.license}
+          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500" 
+        />
+      </div>
+      <p className="text-green text-sm">Please enter your driving licence number in the format: DL1420110012345</p>
+    </div>
+
+
+
+
 
             <div className="mb-4">
               <label htmlFor="wantPillion" className="block text-gray-700 font-bold mb-0">Want Pillion</label>

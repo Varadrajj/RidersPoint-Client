@@ -65,7 +65,7 @@ const Register = () => {
         <div className="mb-4">
           <label htmlFor="username" className="block text-gray-700 font-bold mb-2">Username</label>
           <input
-            type="text"
+            type="email"
             id="username"
             name="username"
             value={formData.username}
@@ -84,6 +84,8 @@ const Register = () => {
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
+            pattern="^(?=.*[!@#$%^&*])(?=.*[a-zA-Z0-9])[a-zA-Z0-9!@#$%^&*]{8,}$"
+            title="Password must contain at least one special character (!@#$%^&*), and be at least 8 characters long"
             required
           />
         </div>
@@ -110,7 +112,10 @@ const Register = () => {
             value={formData.mobile}
             onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-indigo-500"
+            pattern="[0-9]{10}"
+            title="Mobile number must be exactly 10 digits without Country Code"
             required
+
           />
         </div>
 
@@ -125,6 +130,7 @@ const Register = () => {
                 value="rider"
                 checked={formData.mode === "rider"}
                 onChange={() => setFormData({ ...formData, mode: "rider" })}
+                required
               />
               Rider
             </label>
@@ -136,6 +142,7 @@ const Register = () => {
                 value="pillion"
                 checked={formData.mode === "pillion"}
                 onChange={() => setFormData({ ...formData, mode: "pillion" })}
+                required
               />
               Pillion
             </label>

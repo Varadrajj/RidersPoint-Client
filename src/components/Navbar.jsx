@@ -216,7 +216,7 @@ const Navbar = () => {
             onClick={() => setOpenMenu(false)}
             to="/service"
           >
-            Services
+            Gallery
           </NavLink>
         </li>
         <li className="mb-4 lg:mb-0">
@@ -228,7 +228,7 @@ const Navbar = () => {
             Contact
           </NavLink>
         </li>
-        <li className="mb-4 lg:mb-0">
+        {/* <li className="mb-4 lg:mb-0">
           <NavLink
             className="text-gray-800 font-inter hover:text-gray-600 transition duration-300 ease-in-out"
             onClick={() => setOpenMenu(false)}
@@ -236,7 +236,7 @@ const Navbar = () => {
           >
             Events
           </NavLink>
-        </li>
+        </li> */}
         <li className="mb-4 lg:mb-0">
           {currentUser ?
 
